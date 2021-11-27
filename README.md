@@ -34,7 +34,9 @@ Application responsible to manage Bookmarks
 - API?
 - Test the links?
 - Save the content from the link
- 
+- Add docker support
+- Job that executes every X times
+
 ## Requirements :wrench:
  
 - Git ([download](https://git-scm.com/downloads))

@@ -1,19 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookmarksManager.UnitTests", "BookmarksManager.UnitTests\BookmarksManager.UnitTests.csproj", "{FECA2C5D-ECCF-405C-81D0-0DF73BCC5539}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookmarksManager.UnitTests", "BookmarksManager.UnitTests\BookmarksManager.UnitTests.csproj", "{FECA2C5D-ECCF-405C-81D0-0DF73BCC5539}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookmarksManager.App", "BookmarksManager.App\BookmarksManager.App.csproj", "{1EC55D4D-653F-464E-874F-ACC75E051C7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookmarksManager.App", "BookmarksManager.App\BookmarksManager.App.csproj", "{1EC55D4D-653F-464E-874F-ACC75E051C7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DDBA17D4-C63B-44D2-874F-8A3D07D888D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{BB6CE13E-BE9D-41C2-9641-2A8BED87E40B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6FAE647A-624D-459C-91C8-52DC4B6F7355}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookmarksManager.Domain", "BookmarksManager.Domain\BookmarksManager.Domain.csproj", "{72BA1588-73B7-4AC6-AB01-ADFC6BC687F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FECA2C5D-ECCF-405C-81D0-0DF73BCC5539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -24,5 +29,21 @@ Global
 		{1EC55D4D-653F-464E-874F-ACC75E051C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EC55D4D-653F-464E-874F-ACC75E051C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EC55D4D-653F-464E-874F-ACC75E051C7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72BA1588-73B7-4AC6-AB01-ADFC6BC687F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72BA1588-73B7-4AC6-AB01-ADFC6BC687F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72BA1588-73B7-4AC6-AB01-ADFC6BC687F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72BA1588-73B7-4AC6-AB01-ADFC6BC687F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FECA2C5D-ECCF-405C-81D0-0DF73BCC5539} = {BB6CE13E-BE9D-41C2-9641-2A8BED87E40B}
+		{1EC55D4D-653F-464E-874F-ACC75E051C7F} = {6FAE647A-624D-459C-91C8-52DC4B6F7355}
+		{6FAE647A-624D-459C-91C8-52DC4B6F7355} = {DDBA17D4-C63B-44D2-874F-8A3D07D888D5}
+		{72BA1588-73B7-4AC6-AB01-ADFC6BC687F1} = {6FAE647A-624D-459C-91C8-52DC4B6F7355}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1730522-F1EF-4981-9FA3-37FDA9D57695}
 	EndGlobalSection
 EndGlobal

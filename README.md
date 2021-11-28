@@ -29,13 +29,7 @@ Application responsible to manage Bookmarks
 
 ## Features on backlog :notebook:
 
-- Get the links list from a specific folder
-- Save the links into a database
-- API?
-- Test the links?
-- Save the content from the link
-- Add docker support
-- Job that executes every X times
+[Checkout](https://github.com/wbail/BookmarksManager/issues)
 
 ## Requirements :wrench:
  

@@ -1,4 +1,4 @@
-﻿using BookmarksManager.App.Domain;
+﻿using BookmarksManager.Domain.Entities;
 using Newtonsoft.Json;
 
 namespace BookmarksManager.App.Application;

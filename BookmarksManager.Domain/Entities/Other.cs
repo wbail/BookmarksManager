@@ -2,7 +2,7 @@
 
 public class Other
 {
-    public List<object> Children { get; set; }
+    public List<Child> Children { get; set; }
     public string DateAdded { get; set; }
     public string DateModified { get; set; }
     public string Guid { get; set; }

@@ -1,4 +1,6 @@
-﻿namespace BookmarksManager.Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BookmarksManager.Domain.Entities;
 
 public class Synced
 {
@@ -6,6 +8,8 @@ public class Synced
     public string DateAdded { get; set; }
     public string DateModified { get; set; }
     public string Guid { get; set; }
+
+    [Key]
     public string Id { get; set; }
     public string Name { get; set; }
     public string Type { get; set; }

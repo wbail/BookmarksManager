@@ -17,4 +17,37 @@ public class BookmarksManagerDbContext : DbContext
     public DbSet<Root> Root { get; set; }
     public DbSet<Roots> Roots { get; set; }
     public DbSet<Synced> Synced { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<BookmarkBar>().HasNoKey();
+
+        modelBuilder.Entity<Child>().HasKey(x => x.Id);
+        modelBuilder.Entity<Child>().Ignore(x => x.MetaInfo);
+        modelBuilder.Entity<Child>().Ignore(x => x.DateAdded);
+        modelBuilder.Entity<Child>().Ignore(x => x.DateModified);
+        //modelBuilder.Entity<Child>().Ignore(x => x.Guid);
+        //modelBuilder.Entity<Child>().Ignore(x => x.Type);
+        
+        modelBuilder.Entity<MetaInfo>().HasNoKey();
+        
+        modelBuilder.Entity<Other>().HasNoKey();
+        
+        modelBuilder.Entity<Root>().HasNoKey();
+        modelBuilder.Entity<Root>().Ignore(x => x.Roots);
+
+        modelBuilder.Entity<Roots>().HasNoKey();
+        modelBuilder.Entity<Roots>().Ignore(x => x.BookmarkBar);
+        modelBuilder.Entity<Roots>().Ignore(x => x.Other);
+        modelBuilder.Entity<Roots>().Ignore(x => x.Synced);
+
+        modelBuilder.Entity<Synced>().HasKey(x => x.Id);
+        modelBuilder.Entity<Synced>().Ignore(x => x.DateAdded);
+        //modelBuilder.Entity<Synced>().Ignore(x => x.Name);
+        modelBuilder.Entity<Synced>().Ignore(x => x.DateModified);
+        //modelBuilder.Entity<Synced>().Ignore(x => x.Guid);
+        //modelBuilder.Entity<Synced>().Ignore(x => x.Type);
+        modelBuilder.Entity<Synced>().HasMany(x => x.Children).WithOne(x => x.Synced);
+    }
+
 }

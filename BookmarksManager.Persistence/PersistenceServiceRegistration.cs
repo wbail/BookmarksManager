@@ -14,6 +14,7 @@ public static class PersistenceServiceRegistration
             options.UseSqlite(configuration.GetConnectionString("BookmarksManager")));
 
         services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
+        services.AddScoped<ISyncedRepository, SyncedRepository>();
 
         return services;
     }

@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookmarksManager.Persistenc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{C0FBC629-3140-441B-8F25-5C84908E021F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookmarksManager.Api", "BookmarksManager.Api\BookmarksManager.Api.csproj", "{AF74F2D6-391C-4D3A-9776-7B983D5E9952}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookmarksManager.Api", "BookmarksManager.Api\BookmarksManager.Api.csproj", "{AF74F2D6-391C-4D3A-9776-7B983D5E9952}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookmarksManager.Infrastructure", "BookmarksManager.Infrastructure\BookmarksManager.Infrastructure.csproj", "{113EAE45-2D75-49A1-8FB7-6B921A3F4E7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookmarksManager.Infrastructure", "BookmarksManager.Infrastructure\BookmarksManager.Infrastructure.csproj", "{113EAE45-2D75-49A1-8FB7-6B921A3F4E7C}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{DAFEEAFC-2B1F-443C-BD9A-89BA5794C21B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{113EAE45-2D75-49A1-8FB7-6B921A3F4E7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{113EAE45-2D75-49A1-8FB7-6B921A3F4E7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{113EAE45-2D75-49A1-8FB7-6B921A3F4E7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAFEEAFC-2B1F-443C-BD9A-89BA5794C21B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAFEEAFC-2B1F-443C-BD9A-89BA5794C21B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAFEEAFC-2B1F-443C-BD9A-89BA5794C21B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAFEEAFC-2B1F-443C-BD9A-89BA5794C21B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

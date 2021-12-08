@@ -1,7 +1,7 @@
 ﻿namespace BookmarksManager.Infrastructure.Configurations;
 
-public class GoogleChromeBookmarksPathConfiguration
+public class GoogleChromeBookmarksPathConfigurationWindows
 {
-    public string GoogleChromeBookmarksPath { get; set; }
+    public string GoogleChromeBookmarksPathWindows { get; set; }
     public string LocalAppData { get { return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData); } private set { } }
 }

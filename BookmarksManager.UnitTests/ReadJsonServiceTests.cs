@@ -9,19 +9,43 @@ public class ReadJsonServiceTests
 {
     public ReadJsonServiceTests()
     {
-        _googleChromeBookmarksPathConfiguration = new GoogleChromeBookmarksPathConfiguration();
-        _googleChromeBookmarksPathConfiguration.GoogleChromeBookmarksPath = "\\Google\\Chrome\\User Data\\Default\\Bookmarks";
+        _googleChromeBookmarksPathConfigurationWindows = new GoogleChromeBookmarksPathConfigurationWindows();
+
+        _googleChromeBookmarksPathConfigurationLinux = new GoogleChromeBookmarksPathConfigurationLinux();
     }
 
-    private readonly GoogleChromeBookmarksPathConfiguration _googleChromeBookmarksPathConfiguration;
+    private readonly GoogleChromeBookmarksPathConfigurationWindows _googleChromeBookmarksPathConfigurationWindows;
+    private readonly GoogleChromeBookmarksPathConfigurationLinux _googleChromeBookmarksPathConfigurationLinux;
 
     [Fact]
-    public async Task ReadJsonAsync_ReceiveTheCorrectFromAppSettings_ReturnsThePath()
+    public async Task ReadJsonAsync_ReceiveTheCorrectFromAppSettings_ReturnsThePathWindows()
     {
-        var readJsonService = new ReadJsonService(_googleChromeBookmarksPathConfiguration);
+        // Arrange
+        _googleChromeBookmarksPathConfigurationWindows.GoogleChromeBookmarksPathWindows = "\\Google\\Chrome\\User Data\\Default\\Bookmarks";
 
+        var readJsonService = new ReadJsonService(_googleChromeBookmarksPathConfigurationWindows, _googleChromeBookmarksPathConfigurationLinux);
+
+        // Act
         var result = await readJsonService.ReadJsonAsync();
 
+        // Assert
         Assert.NotNull(result);
+        Assert.NotEmpty(result);
+    }
+
+    [Fact(Skip = "Needs to mock the string result")]
+    public async Task ReadJsonAsync_ReceiveTheCorrectFromAppSettings_ReturnsThePathLinux()
+    {
+        // Arrange
+        _googleChromeBookmarksPathConfigurationLinux.GoogleChromeBookmarksPathLinux = "~/.config/google-chrome/Default/Bookmarks";
+
+        var readJsonService = new ReadJsonService(_googleChromeBookmarksPathConfigurationWindows, _googleChromeBookmarksPathConfigurationLinux);
+
+        // Act
+        var result = await readJsonService.ReadJsonAsync();
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.NotEmpty(result);
     }
 }

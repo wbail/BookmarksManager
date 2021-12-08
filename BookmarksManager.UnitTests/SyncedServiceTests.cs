@@ -11,26 +11,49 @@ public class SyncedServiceTests
 {
     public SyncedServiceTests()
     {
-        _googleChromeBookmarksPathConfiguration = new GoogleChromeBookmarksPathConfiguration();
-        _googleChromeBookmarksPathConfiguration.GoogleChromeBookmarksPath = "\\Google\\Chrome\\User Data\\Default\\Bookmarks";
+        _googleChromeBookmarksPathConfigurationWindows = new GoogleChromeBookmarksPathConfigurationWindows();
+        _googleChromeBookmarksPathConfigurationLinux = new GoogleChromeBookmarksPathConfigurationLinux();
 
-        _readJsonService = new ReadJsonService(_googleChromeBookmarksPathConfiguration);
+        _readJsonService = new ReadJsonService(_googleChromeBookmarksPathConfigurationWindows, _googleChromeBookmarksPathConfigurationLinux);
 
         _syncedRepositoryMock = new Mock<ISyncedRepository>();
 
         _syncedService = new SyncedService(_readJsonService, _syncedRepositoryMock.Object);
     }
 
-    private readonly ReadJsonService _readJsonService;
+    private ReadJsonService _readJsonService;
     private readonly SyncedService _syncedService;
-    private readonly GoogleChromeBookmarksPathConfiguration _googleChromeBookmarksPathConfiguration;
+    private readonly GoogleChromeBookmarksPathConfigurationWindows _googleChromeBookmarksPathConfigurationWindows;
+    private readonly GoogleChromeBookmarksPathConfigurationLinux _googleChromeBookmarksPathConfigurationLinux;
     private readonly Mock<ISyncedRepository> _syncedRepositoryMock;
 
     [Fact]
-    public async Task GetSyncedAsync_RootIsNotEmpty_ReturnsSynced()
+    public async Task GetSyncedAsync_RootIsNotEmptyWindows_ReturnsSynced()
     {
+        // Arrange
+        _googleChromeBookmarksPathConfigurationWindows.GoogleChromeBookmarksPathWindows = "\\Google\\Chrome\\User Data\\Default\\Bookmarks";
+
+        _readJsonService = new ReadJsonService(_googleChromeBookmarksPathConfigurationWindows, _googleChromeBookmarksPathConfigurationLinux);
+
+        // Act
         var result = await _syncedService.GetSyncedAsync();
 
+        // Assert
+        Assert.NotNull(result);
+    }
+
+    [Fact(Skip = "Needs to mock the string result")]
+    public async Task GetSyncedAsync_RootIsNotEmptyLinux_ReturnsSynced()
+    {
+        // Arrange
+        _googleChromeBookmarksPathConfigurationLinux.GoogleChromeBookmarksPathLinux = "~/.config/google-chrome/Default/Bookmarks";
+
+        _readJsonService = new ReadJsonService(_googleChromeBookmarksPathConfigurationWindows, _googleChromeBookmarksPathConfigurationLinux);
+
+        // Act
+        var result = await _syncedService.GetSyncedAsync();
+
+        // Assert
         Assert.NotNull(result);
     }
 }

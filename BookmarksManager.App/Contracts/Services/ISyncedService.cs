@@ -1,6 +1,9 @@
-﻿namespace BookmarksManager.App.Contracts.Services;
+﻿using BookmarksManager.Domain.Entities;
+
+namespace BookmarksManager.App.Contracts.Services;
 
 public interface ISyncedService
 {
-    Task<List<string>> GetAllLinksAsync();
+    Task<Synced> GetSyncedAsync();
+    Task<Synced> SaveSyncedAsync(Synced synced);
 }

@@ -10,6 +10,7 @@ public static class BookmarksManagerServiceRegistration
     {
         services.AddScoped<IReadJsonService, ReadJsonService>();
         services.AddScoped<ISyncedService, SyncedService>();
+        services.AddScoped<ILinkService, LinkService>();
 
         return services;
     }

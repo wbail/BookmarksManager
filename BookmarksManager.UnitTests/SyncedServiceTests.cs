@@ -2,7 +2,6 @@
 using BookmarksManager.App.Services;
 using BookmarksManager.Infrastructure.Configurations;
 using Moq;
-using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -28,10 +27,10 @@ public class SyncedServiceTests
     private readonly Mock<ISyncedRepository> _syncedRepositoryMock;
 
     [Fact]
-    public async Task GetAll_RootIsNotEmpty_ReturnsListOfSyncedLinks()
+    public async Task GetSyncedAsync_RootIsNotEmpty_ReturnsSynced()
     {
-        var result = await _syncedService.GetAllLinksAsync();
+        var result = await _syncedService.GetSyncedAsync();
 
-        Assert.True(result.Any());
+        Assert.NotNull(result);
     }
 }

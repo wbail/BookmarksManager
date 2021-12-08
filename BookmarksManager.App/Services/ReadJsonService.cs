@@ -17,9 +17,13 @@ public class ReadJsonService : IReadJsonService
     public async Task<string> ReadJsonAsync()
     {
         var windows = await ReadJsonWindowsAsync();
-        var linux = await ReadJsonLinuxAsync();
 
-        return !string.IsNullOrEmpty(linux) ? linux : windows;
+        if (!string.IsNullOrEmpty(windows))
+        {
+            return windows;
+        }
+
+        return await ReadJsonLinuxAsync();
     }
 
     private async Task<string> ReadJsonLinuxAsync()

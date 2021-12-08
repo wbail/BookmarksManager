@@ -1,8 +1,6 @@
-﻿using BookmarksManager.App.Contracts.Persistence;
-using BookmarksManager.App.Contracts.Services;
+﻿using BookmarksManager.App.Contracts.Services;
 using BookmarksManager.App.Services;
 using BookmarksManager.Domain.Entities;
-using BookmarksManager.Infrastructure.Configurations;
 using Moq;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +13,6 @@ public class LinkServiceTests
 {
     public LinkServiceTests()
     {
-        _googleChromeBookmarksPathConfiguration = new GoogleChromeBookmarksPathConfiguration();
-        _googleChromeBookmarksPathConfiguration.GoogleChromeBookmarksPath = "\\Google\\Chrome\\User Data\\Default\\Bookmarks";
-
-        _readJsonService = new ReadJsonService(_googleChromeBookmarksPathConfiguration);
-
-        _syncedRepositoryMock = new Mock<ISyncedRepository>();
-
         _syncedServiceMock = new Mock<ISyncedService>();
 
         _linkService = new LinkService(_syncedServiceMock.Object);
@@ -29,10 +20,6 @@ public class LinkServiceTests
 
     private readonly Mock<ISyncedService> _syncedServiceMock;
     private readonly LinkService _linkService;
-
-    private readonly ReadJsonService _readJsonService;
-    private readonly GoogleChromeBookmarksPathConfiguration _googleChromeBookmarksPathConfiguration;
-    private readonly Mock<ISyncedRepository> _syncedRepositoryMock;
 
     [Fact]
     public async Task GetAll_ValidRequest_RetunsListOfLinks()

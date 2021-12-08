@@ -2,5 +2,5 @@
 
 public interface ISyncedService
 {
-    Task<List<string>> GetAll();
+    Task<List<string>> GetAllLinksAsync();
 }

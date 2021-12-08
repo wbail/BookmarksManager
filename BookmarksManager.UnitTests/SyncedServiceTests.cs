@@ -30,7 +30,7 @@ public class SyncedServiceTests
     [Fact]
     public async Task GetAll_RootIsNotEmpty_ReturnsListOfSyncedLinks()
     {
-        var result = await _syncedService.GetAll();
+        var result = await _syncedService.GetAllLinksAsync();
 
         Assert.True(result.Any());
     }

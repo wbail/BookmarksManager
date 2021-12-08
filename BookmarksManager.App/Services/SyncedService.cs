@@ -16,7 +16,7 @@ public class SyncedService : ISyncedService
         _syncedRepository = syncedRepository;
     }
 
-    public async Task<List<string>> GetAll()
+    public async Task<List<string>> GetAllLinksAsync()
     {
         var root = await GetRoot();
 

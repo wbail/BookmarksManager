@@ -16,23 +16,25 @@ public class SyncedService : ISyncedService
         _syncedRepository = syncedRepository;
     }
 
-    public async Task<List<string>> GetAll()
+    #region Public Methods
+
+    public async Task<Synced> GetSyncedAsync()
     {
         var root = await GetRoot();
 
         var synced = root.Roots.Synced;
 
-        var links = new List<string>();
-
-        foreach (var link in synced.Children)
-        {
-            links.Add(link.Url);
-        }
-
-        await _syncedRepository.AddAsync(synced);
-
-        return links;
+        return synced;
     }
+
+    public async Task<Synced> SaveSyncedAsync(Synced synced)
+    {
+        return await _syncedRepository.AddAsync(synced);
+    }
+
+    #endregion
+
+    #region Private Methods
 
     private async Task<Root> GetRoot()
     {
@@ -40,4 +42,6 @@ public class SyncedService : ISyncedService
 
         return JsonConvert.DeserializeObject<Root>(jsonString);
     }
+
+    #endregion
 }

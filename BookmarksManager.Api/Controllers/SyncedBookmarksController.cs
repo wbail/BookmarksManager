@@ -8,17 +8,23 @@ namespace BookmarksManager.Api.Controllers;
 public class SyncedBookmarksController : ControllerBase
 {
     private readonly ILogger<SyncedBookmarksController> _logger;
-    private readonly ISyncedService _syncedService;
+    private readonly ILinkService _linkService;
 
-    public SyncedBookmarksController(ILogger<SyncedBookmarksController> logger, ISyncedService syncedService)
+    public SyncedBookmarksController(ILogger<SyncedBookmarksController> logger, ILinkService linkService)
     {
         _logger = logger;
-        _syncedService = syncedService;
+        _linkService = linkService;
     }
 
     [HttpGet]
-    public async Task<IEnumerable<string>> Get()
+    public async Task<IEnumerable<string>> GetAllLinksAsync()
     {
-        return await _syncedService.GetAll();
+        return await _linkService.GetAll();
+    }
+
+    [HttpPost]
+    public async Task SaveSynced()
+    {
+        await _linkService.SaveToDatabase();
     }
 }

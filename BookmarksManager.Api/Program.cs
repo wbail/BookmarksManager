@@ -7,9 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 var provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetService<IConfiguration>();
 
-var googleChromeBookmarksPathConfiguration = new GoogleChromeBookmarksPathConfiguration();
-googleChromeBookmarksPathConfiguration.GoogleChromeBookmarksPath = configuration.GetValue<string>("GoogleChromeBookmarksPath");
-builder.Services.AddSingleton<GoogleChromeBookmarksPathConfiguration>(googleChromeBookmarksPathConfiguration);
+var googleChromeBookmarksPathConfigurationWindows = new GoogleChromeBookmarksPathConfigurationWindows();
+googleChromeBookmarksPathConfigurationWindows.GoogleChromeBookmarksPathWindows = configuration.GetValue<string>("GoogleChromeBookmarksPathWindows");
+builder.Services.AddSingleton<GoogleChromeBookmarksPathConfigurationWindows>(googleChromeBookmarksPathConfigurationWindows);
+
+var googleChromeBookmarksPathConfigurationLinux = new GoogleChromeBookmarksPathConfigurationLinux();
+googleChromeBookmarksPathConfigurationLinux.GoogleChromeBookmarksPathLinux = configuration.GetValue<string>("GoogleChromeBookmarksPathLinux");
+builder.Services.AddSingleton<GoogleChromeBookmarksPathConfigurationLinux>(googleChromeBookmarksPathConfigurationLinux);
 
 BookmarksManagerServiceRegistration.AddAppServices(builder.Services);
 PersistenceServiceRegistration.AddPersistenceServices(builder.Services, configuration);

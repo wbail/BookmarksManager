@@ -19,4 +19,11 @@ public class LinkService : ILinkService
             .Select(x => x.Url)
             .ToList();
     }
+
+    public async Task SaveToDatabase()
+    {
+        var synced = await _syncedService.GetSyncedAsync();
+
+        await _syncedService.SaveSyncedAsync(synced);
+    }
 }

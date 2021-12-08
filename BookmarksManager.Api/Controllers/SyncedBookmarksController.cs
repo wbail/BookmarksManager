@@ -21,4 +21,10 @@ public class SyncedBookmarksController : ControllerBase
     {
         return await _linkService.GetAll();
     }
+
+    [HttpPost]
+    public async Task SaveSynced()
+    {
+        await _linkService.SaveToDatabase();
+    }
 }

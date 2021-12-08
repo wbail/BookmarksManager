@@ -3,4 +3,5 @@
 public interface ILinkService
 {
     Task<IEnumerable<string>> GetAll();
+    Task SaveToDatabase();
 }

@@ -8,6 +8,7 @@ public class BookmarksManagerDbContext : DbContext
     public BookmarksManagerDbContext(DbContextOptions<BookmarksManagerDbContext> options)
         : base(options)
     {
+        Database.MigrateAsync();
     }
 
     public DbSet<BookmarkBar> BookmarkBar { get; set; }
@@ -26,8 +27,6 @@ public class BookmarksManagerDbContext : DbContext
         modelBuilder.Entity<Child>().Ignore(x => x.MetaInfo);
         modelBuilder.Entity<Child>().Ignore(x => x.DateAdded);
         modelBuilder.Entity<Child>().Ignore(x => x.DateModified);
-        //modelBuilder.Entity<Child>().Ignore(x => x.Guid);
-        //modelBuilder.Entity<Child>().Ignore(x => x.Type);
         
         modelBuilder.Entity<MetaInfo>().HasNoKey();
         
@@ -43,10 +42,7 @@ public class BookmarksManagerDbContext : DbContext
 
         modelBuilder.Entity<Synced>().HasKey(x => x.Id);
         modelBuilder.Entity<Synced>().Ignore(x => x.DateAdded);
-        //modelBuilder.Entity<Synced>().Ignore(x => x.Name);
         modelBuilder.Entity<Synced>().Ignore(x => x.DateModified);
-        //modelBuilder.Entity<Synced>().Ignore(x => x.Guid);
-        //modelBuilder.Entity<Synced>().Ignore(x => x.Type);
         modelBuilder.Entity<Synced>().HasMany(x => x.Children).WithOne(x => x.Synced);
     }
 

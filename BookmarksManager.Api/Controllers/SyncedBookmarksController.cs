@@ -16,10 +16,16 @@ public class SyncedBookmarksController : ControllerBase
         _linkService = linkService;
     }
 
-    [HttpGet]
+    [HttpGet("links", Name = "Get All Links from Memory")]
     public async Task<IEnumerable<string>> GetAllLinksAsync()
     {
         return await _linkService.GetAll();
+    }
+
+    [HttpGet]
+    public async Task<IEnumerable<string>> GetSynced()
+    {
+        return await _linkService.Get();
     }
 
     [HttpPost]

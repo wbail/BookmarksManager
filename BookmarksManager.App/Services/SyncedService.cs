@@ -18,6 +18,11 @@ public class SyncedService : ISyncedService
 
     #region Public Methods
 
+    public async Task<IReadOnlyList<Synced>> Get()
+    {
+        return await _syncedRepository.Get();
+    }
+
     public async Task<Synced> GetSyncedAsync()
     {
         var root = await GetRoot();

@@ -11,6 +11,17 @@ public class LinkService : ILinkService
         _syncedService = syncedService;
     }
 
+    public async Task<IEnumerable<string>> Get()
+    {
+        var synced = await _syncedService.Get();
+
+        synced = synced.ToList();
+
+        var test = synced.FirstOrDefault();
+
+        return test?.Children.Select(x => x.Url).ToList();
+    }
+
     public async Task<IEnumerable<string>> GetAll()
     {
         var synced = await _syncedService.GetSyncedAsync();

@@ -7,4 +7,6 @@ public interface ISyncedService
     Task<Synced> GetSyncedAsync();
     Task<Synced> SaveSyncedAsync(Synced synced);
     Task<IReadOnlyList<Synced>> Get();
+    Task<Child> GetLastLinkSynced();
+    Task<Child> SaveLastSyncedToDatabaseAsync(Child child);
 }

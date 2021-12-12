@@ -9,11 +9,20 @@ public class SyncedService : ISyncedService
 {
     private readonly IReadJsonService _readJsonService;
     private readonly ISyncedRepository _syncedRepository;
+    private readonly IChildRepository _childRepository;
+    private const string _syncedId = "3";
 
     public SyncedService(IReadJsonService readJsonService, ISyncedRepository syncedRepository)
     {
         _readJsonService = readJsonService;
         _syncedRepository = syncedRepository;
+    }
+
+    public SyncedService(IReadJsonService readJsonService, ISyncedRepository syncedRepository, IChildRepository childRepository)
+    {
+        _readJsonService = readJsonService;
+        _syncedRepository = syncedRepository;
+        _childRepository = childRepository;
     }
 
     #region Public Methods
@@ -23,11 +32,21 @@ public class SyncedService : ISyncedService
         return await _syncedRepository.Get();
     }
 
+    public async Task<Child> GetLastLinkSynced()
+    {
+        var synced = await GetSyncedAsync();
+        var lastChild = synced?.Children.LastOrDefault();
+
+        lastChild.SyncedId = _syncedId;
+
+        return lastChild;
+    }
+
     public async Task<Synced> GetSyncedAsync()
     {
         var root = await GetRoot();
 
-        var synced = root.Roots.Synced;
+        var synced = root?.Roots.Synced;
 
         return synced;
     }
@@ -35,6 +54,11 @@ public class SyncedService : ISyncedService
     public async Task<Synced> SaveSyncedAsync(Synced synced)
     {
         return await _syncedRepository.AddAsync(synced);
+    }
+
+    public async Task<Child> SaveLastSyncedToDatabaseAsync(Child child)
+    {
+        return await _childRepository.AddAsync(child);
     }
 
     #endregion

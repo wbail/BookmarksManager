@@ -1,0 +1,101 @@
+{
+   "checksum": "e21ca84b793e873f3d25bacc7a7777a7",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "children": [ {
+               "date_added": "13151817860000000",
+               "guid": "2581d2d1-2f2c-4189-ba54-f1f9e361a3ff",
+               "id": "6",
+               "meta_info": {
+                  "last_visited_desktop": "13179172799845821"
+               },
+               "name": "Tutorial Feature Branch - YouTube",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=rh0ktUl6nzU"
+            } ],
+            "date_added": "13248060630620408",
+            "date_modified": "13248060630620408",
+            "guid": "762a8004-463a-4afe-a48e-68d4acd2f065",
+            "id": "5",
+            "name": "Workflow",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13151817775000000",
+               "guid": "f8d18c46-5ecd-43d2-87e9-9d02f1352f0c",
+               "id": "8",
+               "meta_info": {
+                  "last_visited_desktop": "13169240179856586"
+               },
+               "name": "Design Guide",
+               "type": "url",
+               "url": "https://martinfowler.com/design.html"
+            } ],
+            "date_added": "13248060630618835",
+            "date_modified": "13248060630618835",
+            "guid": "0e753d11-1375-461c-a9b3-1e831cefb09a",
+            "id": "7",
+            "name": "Arquitetura",
+            "type": "folder"
+         }, {
+            "date_added": "13209442436497789",
+            "guid": "5f172420-b85c-4a8d-82ff-0b4ffb14e5e7",
+            "id": "28",
+            "name": "",
+            "type": "url",
+            "url": "https://www.reddit.com/"
+         }, {
+            "date_added": "13201739671423241",
+            "guid": "9c730871-9112-4137-8ac3-b8fcc283b8c6",
+            "id": "33",
+            "meta_info": {
+               "last_visited_desktop": "13202176984674556"
+            },
+            "name": "Oracle Live SQL",
+            "type": "url",
+            "url": "https://livesql.oracle.com/apex/f?p=590:1000"
+         } ],
+         "date_added": "13279094946199195",
+         "date_modified": "13282445883296032",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13279094946199198",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [ {
+            "date_added": "13271961482990459",
+            "guid": "aea3d950-8c34-49c0-a43a-29d440e7af1d",
+            "id": "67",
+            "name": "test",
+            "type": "url",
+            "url": "https://test.com"
+         }, {
+            "date_added": "13271961512284305",
+            "guid": "0545faed-c3c1-4ddb-aca1-095f61f8c671",
+            "id": "68",
+            "name": "test1",
+            "type": "url",
+            "url": "https://test1.com"
+         } ],
+         "date_added": "13279094946199199",
+         "date_modified": "13283708651409681",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "sync_metadata": "CrABCo8BCIiBAhKIARJ2CAISOAoGCgJibRABEDMaEgmAOnl+3tIFACGAOnl+3tIFADIYChYIAhEKpWWO3tIFABgAIQAAAAAAAAAAE",
+   "version": 1
+}

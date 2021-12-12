@@ -3,6 +3,7 @@
 public interface ILinkService
 {
     Task<IEnumerable<string>> GetAll();
-    Task SaveToDatabase();
+    Task SaveLastLinkSyncedToDatabase();
     Task<IEnumerable<string>> Get();
+    Task SaveSyncedToDatabase();
 }

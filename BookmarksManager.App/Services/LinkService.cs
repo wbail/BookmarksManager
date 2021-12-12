@@ -31,7 +31,14 @@ public class LinkService : ILinkService
             .ToList();
     }
 
-    public async Task SaveToDatabase()
+    public async Task SaveLastLinkSyncedToDatabase()
+    {
+        var lastSynced = await _syncedService.GetLastLinkSynced();
+
+        await _syncedService.SaveLastSyncedToDatabaseAsync(lastSynced);
+    }
+
+    public async Task SaveSyncedToDatabase()
     {
         var synced = await _syncedService.GetSyncedAsync();
 

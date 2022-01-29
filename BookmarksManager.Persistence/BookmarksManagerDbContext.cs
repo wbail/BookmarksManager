@@ -18,6 +18,7 @@ public class BookmarksManagerDbContext : DbContext
     public DbSet<Root> Root { get; set; }
     public DbSet<Roots> Roots { get; set; }
     public DbSet<Synced> Synced { get; set; }
+    public DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

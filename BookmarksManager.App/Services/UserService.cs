@@ -15,6 +15,11 @@ public class UserService : IUserService
 
     public async Task AddUser(User user)
     {
-        throw new NotImplementedException();
+        await _userRepository.AddAsync(user);
+    }
+
+    public async Task<bool> IsUserExists(string username, string password)
+    {
+        return await _userRepository.IsUserExists(username, password);
     }
 }

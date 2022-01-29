@@ -35,3 +35,8 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
+
+# Local
+BookmarksManager.Api/db
+BookmarksManager.Api/db-shm
+BookmarksManager.Api/db-wal

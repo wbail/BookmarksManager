@@ -1,5 +1,6 @@
+using BookmarksManager.Api.Configurations;
 using BookmarksManager.App;
-using BookmarksManager.Infrastructure.Configurations;
+using BookmarksManager.Infrastructure;
 using BookmarksManager.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,20 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 var provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetService<IConfiguration>();
 
-var googleChromeBookmarksPathConfigurationWindows = new GoogleChromeBookmarksPathConfigurationWindows();
-googleChromeBookmarksPathConfigurationWindows.GoogleChromeBookmarksPathWindows = configuration.GetValue<string>("GoogleChromeBookmarksPathWindows");
-builder.Services.AddSingleton<GoogleChromeBookmarksPathConfigurationWindows>(googleChromeBookmarksPathConfigurationWindows);
-
-var googleChromeBookmarksPathConfigurationLinux = new GoogleChromeBookmarksPathConfigurationLinux();
-googleChromeBookmarksPathConfigurationLinux.GoogleChromeBookmarksPathLinux = configuration.GetValue<string>("GoogleChromeBookmarksPathLinux");
-builder.Services.AddSingleton<GoogleChromeBookmarksPathConfigurationLinux>(googleChromeBookmarksPathConfigurationLinux);
-
-BookmarksManagerServiceRegistration.AddAppServices(builder.Services);
+AppServiceRegistration.AddAppServices(builder.Services);
 PersistenceServiceRegistration.AddPersistenceServices(builder.Services, configuration);
+InfrastructureServiceRegistration.AddInfrastructureServices(builder.Services, configuration);
+JwtConfiguration.Configure(builder.Services, configuration);
+SwaggerConfiguration.Configure(builder.Services, configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -31,6 +26,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

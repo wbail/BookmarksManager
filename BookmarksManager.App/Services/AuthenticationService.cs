@@ -25,27 +25,29 @@ public class AuthenticationService : IAuthenticationService
     {
         var isUserExists = await _userRepository.IsUserExists(userAuthentication.Username, userAuthentication.Password);
 
-        if (!isUserExists)
+        if (isUserExists)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var tokenKey = Encoding.UTF8.GetBytes(_jwtSettings.Value.Key);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                 new Claim(ClaimTypes.Name, userAuthentication.Username)
+                }),
+                Expires = DateTime.UtcNow.AddMinutes(10),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return new Tokens { Token = tokenHandler.WriteToken(token) };
+        }
+        else
         {
             return null;
         }
-
-        var tokenHandler = new JwtSecurityTokenHandler();
-
-        var tokenKey = Encoding.UTF8.GetBytes(_jwtSettings.Value.Key);
-
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(new Claim[]
-            {
-                 new Claim(ClaimTypes.Name, userAuthentication.Username)
-            }),
-            Expires = DateTime.UtcNow.AddMinutes(10),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
-        };
-
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-
-        return new Tokens { Token = tokenHandler.WriteToken(token) };
     }
 }

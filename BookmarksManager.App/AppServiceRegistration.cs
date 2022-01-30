@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BookmarksManager.App;
 
-public static class BookmarksManagerServiceRegistration
+public static class AppServiceRegistration
 {
     public static IServiceCollection AddAppServices(this IServiceCollection services)
     {
@@ -12,6 +12,7 @@ public static class BookmarksManagerServiceRegistration
         services.AddScoped<ISyncedService, SyncedService>();
         services.AddScoped<ILinkService, LinkService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IAuthenticationService, AuthenticationService>();
 
         return services;
     }

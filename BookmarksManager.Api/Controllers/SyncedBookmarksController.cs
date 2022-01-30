@@ -1,8 +1,10 @@
 ﻿using BookmarksManager.App.Contracts.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookmarksManager.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class SyncedBookmarksController : ControllerBase

@@ -45,6 +45,9 @@ public class BookmarksManagerDbContext : DbContext
         modelBuilder.Entity<Synced>().Ignore(x => x.DateAdded);
         modelBuilder.Entity<Synced>().Ignore(x => x.DateModified);
         modelBuilder.Entity<Synced>().HasMany(x => x.Children).WithOne(x => x.Synced);
-    }
 
+        var user = new User(Guid.NewGuid(), "test", "test7", "default");
+
+        modelBuilder.Entity<User>().HasData(user);
+    }
 }

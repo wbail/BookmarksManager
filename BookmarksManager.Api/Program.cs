@@ -1,4 +1,5 @@
 using BookmarksManager.Api.Configurations;
+using BookmarksManager.Api.Helpers;
 using BookmarksManager.App;
 using BookmarksManager.Infrastructure;
 using BookmarksManager.Persistence;
@@ -30,5 +31,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+DatabaseInitializer.CreateDbIfNotExists(app);
 
 app.Run();

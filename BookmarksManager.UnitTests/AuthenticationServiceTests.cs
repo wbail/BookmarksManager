@@ -63,9 +63,10 @@ public class AuthenticationServiceTests
     private JwtSettings GetJwtSettings()
     {
         var jwtSettings = new JwtSettings();
-        jwtSettings.Key = "stringnullNOD9723od9237dn20937dbn239pdn2p9d3pd2938nd29p38nd2p39d";
+        jwtSettings.Key = "7stringnullNOD9723od9237dn20937dbn239pdn2p9d3pd2938nd29p38nd2p39d7";
         jwtSettings.Issuer = "MyIssuerTest";
         jwtSettings.Audience = "MyAudienceTest";
+        jwtSettings.ExpirationTimeInMinutes = 7;
 
         return jwtSettings;
     }

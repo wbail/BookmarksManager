@@ -14,11 +14,13 @@ public class LinkServiceTests
     public LinkServiceTests()
     {
         _syncedServiceMock = new Mock<ISyncedService>();
+        _testLinkServiceMock = new Mock<ITestLinkService>();
 
-        _linkService = new LinkService(_syncedServiceMock.Object);
+        _linkService = new LinkService(_syncedServiceMock.Object, _testLinkServiceMock.Object);
     }
 
     private readonly Mock<ISyncedService> _syncedServiceMock;
+    private readonly Mock<ITestLinkService> _testLinkServiceMock;
     private readonly LinkService _linkService;
 
     [Fact]

@@ -5,10 +5,12 @@ namespace BookmarksManager.App.Services;
 public class LinkService : ILinkService
 {
     private readonly ISyncedService _syncedService;
+    private readonly ITestLinkService _testLinkService;
 
-    public LinkService(ISyncedService syncedService)
+    public LinkService(ISyncedService syncedService, ITestLinkService testLinkService)
     {
         _syncedService = syncedService;
+        _testLinkService = testLinkService;
     }
 
     public async Task<IEnumerable<string>> Get()
@@ -43,5 +45,21 @@ public class LinkService : ILinkService
         var synced = await _syncedService.GetSyncedAsync();
 
         await _syncedService.SaveSyncedAsync(synced);
+    }
+
+    public async Task<Dictionary<string, bool>> TestSavedLinksAsync()
+    {
+        var urls = await GetAll();
+
+        var dictionary = await _testLinkService.TestLinksAsync(urls);
+
+        return dictionary;
+    }
+
+    public async Task<Dictionary<string, bool>> TestOneLinkAsync(string url)
+    {
+        var result = await _testLinkService.TestOneLinkAsync(url);
+
+        return result;
     }
 }

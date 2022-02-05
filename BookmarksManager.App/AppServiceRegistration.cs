@@ -13,6 +13,9 @@ public static class AppServiceRegistration
         services.AddScoped<ILinkService, LinkService>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAuthenticationService, AuthenticationService>();
+        services.AddScoped<IHttpClientService, HttpClientService>();
+        services.AddScoped<ITestLinkService, TestLinkService>();
+        services.AddSingleton<HttpClient>();
 
         return services;
     }

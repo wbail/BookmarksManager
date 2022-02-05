@@ -41,4 +41,16 @@ public class SyncedBookmarksController : ControllerBase
     {
         await _linkService.SaveSyncedToDatabase();
     }
+
+    [HttpGet("test-link")]
+    public async Task<Dictionary<string, bool>> TestOneLink(string url)
+    {
+        return await _linkService.TestOneLinkAsync(url);
+    }
+
+    [HttpGet("test-saved-links")]
+    public async Task<Dictionary<string, bool>> TestSavedLinks()
+    {
+        return await _linkService.TestSavedLinksAsync();
+    }
 }

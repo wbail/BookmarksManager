@@ -6,4 +6,6 @@ public interface ILinkService
     Task SaveLastLinkSyncedToDatabase();
     Task<IEnumerable<string>> Get();
     Task SaveSyncedToDatabase();
+    Task<Dictionary<string, bool>> TestSavedLinksAsync();
+    Task<Dictionary<string, bool>> TestOneLinkAsync(string url);
 }

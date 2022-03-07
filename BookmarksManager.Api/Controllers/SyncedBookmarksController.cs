@@ -53,4 +53,24 @@ public class SyncedBookmarksController : ControllerBase
     {
         return await _linkService.TestSavedLinksAsync();
     }
+
+    [HttpPut("test-and-update-url")]
+    public async Task<string> TestAndUpdateUrlHealthAsync(string url)
+    {
+        await _linkService.TestAndUpdateUrlHealthAsync(url);
+
+        return url;
+    }
+
+    [HttpPut("test-and-update-all-urls")]
+    public async Task TestAndUpdateAllUrlsHealthAsync()
+    {
+        await _linkService.TestAndUpdateAllUrlsHealthAsync();
+    }
+
+    [HttpPost("export")]
+    public async Task ExportToFiles()
+    {
+        await _linkService.ExportToFiles();
+    }
 }

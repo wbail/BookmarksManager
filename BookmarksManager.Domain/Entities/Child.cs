@@ -36,5 +36,6 @@ public class Child
     public List<Child>? Children { get; set; }
     public string? SyncedId { get; set; }
     public Synced? Synced { get; set; }
+    public List<ChildValidUrl>? ChildValidUrl { get; set; }
     public string DateModified { get; set; }
 }

@@ -8,4 +8,7 @@ public interface ILinkService
     Task SaveSyncedToDatabase();
     Task<Dictionary<string, bool>> TestSavedLinksAsync();
     Task<Dictionary<string, bool>> TestOneLinkAsync(string url);
+    Task TestAndUpdateUrlHealthAsync(string url);
+    Task TestAndUpdateAllUrlsHealthAsync();
+    Task ExportToFiles();
 }

@@ -15,12 +15,14 @@ public class LinkServiceTests
     {
         _syncedServiceMock = new Mock<ISyncedService>();
         _testLinkServiceMock = new Mock<ITestLinkService>();
+        _childValidUrlUpdateServiceMock = new Mock<IChildValidUrlUpdateService>();
 
-        _linkService = new LinkService(_syncedServiceMock.Object, _testLinkServiceMock.Object);
+        _linkService = new LinkService(_syncedServiceMock.Object, _testLinkServiceMock.Object, _childValidUrlUpdateServiceMock.Object);
     }
 
     private readonly Mock<ISyncedService> _syncedServiceMock;
     private readonly Mock<ITestLinkService> _testLinkServiceMock;
+    private readonly Mock<IChildValidUrlUpdateService> _childValidUrlUpdateServiceMock;
     private readonly LinkService _linkService;
 
     [Fact]

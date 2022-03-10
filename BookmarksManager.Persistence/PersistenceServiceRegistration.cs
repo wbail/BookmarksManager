@@ -17,6 +17,7 @@ public static class PersistenceServiceRegistration
         services.AddScoped<ISyncedRepository, SyncedRepository>();
         services.AddScoped<IChildRepository, ChildRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IChildValidUrlRepository, ChildValidUrlRepository>();
 
         return services;
     }

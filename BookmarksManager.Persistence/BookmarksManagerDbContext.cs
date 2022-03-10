@@ -19,6 +19,7 @@ public class BookmarksManagerDbContext : DbContext
     public DbSet<Roots> Roots { get; set; }
     public DbSet<Synced> Synced { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<ChildValidUrl> ChildValidUrl { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -28,6 +29,7 @@ public class BookmarksManagerDbContext : DbContext
         modelBuilder.Entity<Child>().Ignore(x => x.MetaInfo);
         modelBuilder.Entity<Child>().Ignore(x => x.DateAdded);
         modelBuilder.Entity<Child>().Ignore(x => x.DateModified);
+        modelBuilder.Entity<Child>().HasMany(x => x.ChildValidUrl);
         
         modelBuilder.Entity<MetaInfo>().HasNoKey();
         
@@ -46,7 +48,9 @@ public class BookmarksManagerDbContext : DbContext
         modelBuilder.Entity<Synced>().Ignore(x => x.DateModified);
         modelBuilder.Entity<Synced>().HasMany(x => x.Children).WithOne(x => x.Synced);
 
-        var user = new User(Guid.NewGuid(), "test", "test7", "default");
+        modelBuilder.Entity<ChildValidUrl>().HasOne(x => x.Child).WithMany(x => x.ChildValidUrl);
+
+        var user = new User(Guid.Parse("f8148ea9-5ba7-49d3-b6b3-d5a7653ce105"), "test", "test7", "default");
 
         modelBuilder.Entity<User>().HasData(user);
     }
